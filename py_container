@@ -1,0 +1,23 @@
+# Current folder should contain the py files(hello.py), the requirements.txt and the Dockerfile
+/ Dockerfile
+/ # 1. Base image
+/ FROM python
+/ # 2. Copy files
+/ COPY . /src
+/ # 3. Install dependencies
+/ RUN pip install -r /src/requirements.txt
+/ # 4.
+/ CMD [ "python","./hello.py" ]
+
+
+
+docker pull python
+
+# Build image using host's networking(--network=host) with chosen name(test_python) from current folder(.) with 
+docker build --network=host -t test_python .
+
+# Run container script interactively(-i) hello.py with two arguments(a b) remove it affterwards(--rm)
+docker run --rm -i test_python python /src/hello.py a b
+
+#
+docker start -i 
