@@ -17,7 +17,27 @@ docker pull python
 docker build --network=host -t test_python .
 
 # Run container script interactively(-i) hello.py with two arguments(a b) remove it affterwards(--rm)
-docker run --rm -i test_python python /src/hello.py a b
-
+d
 #
 docker start -i 
+
+
+#  OR  OR  OR  OR  OR  OR  OR  OR  OR  #
+
+# Current folder should contain the py files(hello.py), the requirements.txt and the Dockerfile
+/ Dockerfile
+/ # 1. Base image
+/ FROM python
+/ # 2. Copy files
+/ COPY . /src
+/ # 3. Install dependencies
+/ RUN pip install -r /src/requirements.txt
+/ # 4.
+/ ENTRYPOINT ["python","./hello.py"]
+/ CMD ['arg']
+
+
+docker run --rm -i test_python a b
+
+
+os.environ.get('variable name')
